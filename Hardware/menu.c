@@ -16,7 +16,7 @@ void Peripheral_Init(void)
 
 
 
-/*---------------------------------- ◊“≥ ±÷”-------------------------------------*/
+/*----------------------------------È¶ñÈ°µÊó∂Èíü-------------------------------------*/
 
 
 void Show_Clock_UI(void)
@@ -24,8 +24,8 @@ void Show_Clock_UI(void)
 	MyRTC_ReadTime();
 	OLED_Printf(0,0,OLED_6X8,"%d-%d-%d",MyRTC_Time[0],MyRTC_Time[1],MyRTC_Time[2]);
 	OLED_Printf(16,16,OLED_12X24,"%02d:%02d:%02d",MyRTC_Time[3],MyRTC_Time[4],MyRTC_Time[5]);
-	OLED_ShowString(0,48,"≤Àµ•",OLED_8X16);
-	OLED_ShowString(96,48,"…Ë÷√",OLED_8X16);
+	OLED_ShowString(0,48,"ËèúÂçï",OLED_8X16);
+	OLED_ShowString(96,48,"ËÆæÁΩÆ",OLED_8X16);
 }
 
 int clkflag=1;
@@ -36,17 +36,17 @@ int First_Page_Clock(void)
 	{
 		KeyNum=Key_GetNum();
 		
-		if(KeyNum==1)//…œ“ªœÓ
+		if(KeyNum==1)//‰∏ä‰∏ÄÈ°π
 		{
 			clkflag--;
 			if(clkflag<=0)clkflag=2;
 		}
-		else if(KeyNum==2)//œ¬“ªœÓ
+		else if(KeyNum==2)//‰∏ã‰∏ÄÈ°π
 		{
 			clkflag++;
 			if(clkflag>=3)clkflag=1;
 		}
-		else if(KeyNum==3)//»∑»œ
+		else if(KeyNum==3)//Á°ÆËÆ§
 		{
 			OLED_Clear();
 			OLED_Update();

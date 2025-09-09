@@ -35,20 +35,20 @@ uint8_t Key_GetNum(void)
 uint8_t Key_GetState(void)
 {
 	
-	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == 0)
+	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == 0)//按键1按下
 	{
 		return 1;
 	}
-	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6) == 0)
+	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6) == 0)//按键2按下
 	{
 		return 2;
 	}
-	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)
+	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)//按键3按下
 	{
 		return 3;
 	}
 	
-	else
+	else//没有按键按下
 	{
 		return 0;
 	}
