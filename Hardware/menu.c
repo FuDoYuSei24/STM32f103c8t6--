@@ -3,6 +3,7 @@
 #include "MyRTC.h"                                                                                                                                                                                                     
 #include "Key.h"
 #include "LED.h"
+#include "SetTime.h"
 
 
 uint8_t KeyNum;
@@ -35,7 +36,7 @@ int First_Page_Clock(void)
 	while(1)
 	{
 		KeyNum=Key_GetNum();
-		
+		uint8_t setflag_temp;
 		if(KeyNum==1)//上一项
 		{
 			clkflag--;
@@ -51,8 +52,11 @@ int First_Page_Clock(void)
 			OLED_Clear();
 			OLED_Update();
 			return clkflag;
+			setflag_temp=setflag;
 		}
-		
+		if(setflag_temp==1){return 0;};
+		else if(setflag_temp==2){sETTime();};
+
 		switch(clkflag)
 		{
 			case 1:
