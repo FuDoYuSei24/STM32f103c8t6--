@@ -69,3 +69,48 @@ int First_Page_Clock(void)
 		}
 	}
 }
+
+/*----------------------------------设置界面-------------------------------------*/
+void Show_SettingPage_UI(void){
+	OLED_ShowImage(0,0,16,16,Return);
+	OLED_ShowString(0,16.0,"设置时间",OLED_8X16);
+}
+
+int setflage = 1;
+int SettingPage(void){
+	while(1)
+	{
+		KeyNum=Key_GetNum();
+		
+		if(KeyNum==1)//上一项
+		{
+			setflage--;
+			if(setflage<=0)setflage=2;
+		}
+		else if(KeyNum==2)//下一项
+		{
+			setflage++;
+			if(setflage>=3)setflage=1;
+		}
+		else if(KeyNum==3)//确认
+		{
+			OLED_Clear();
+			OLED_Update();
+		}
+		
+		switch(setflage)
+		{
+			case 1:
+				Show_SettingPage_UI();
+				OLED_ReverseArea(0,0,16,16);
+				OLED_Update();
+				break;
+			
+			case 2:
+				Show_SettingPage_UI();
+				OLED_ReverseArea(0,16,96,16);
+				OLED_Update();
+				break;
+		}
+	}
+}
