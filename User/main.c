@@ -38,7 +38,7 @@ int main(void)
 	while (1)
 	{
 		clkflag1=First_Page_Clock();
-		if(clkflag1==1){}//菜单
+		if(clkflag1==1){Menu();}//菜单
 		else if(clkflag1==2){SettingPage}//设置
 	}
 }
