@@ -49,6 +49,7 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
 		Key_Tick();
+    StopWatch_Tick();//秒表的时间增加函数
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }
