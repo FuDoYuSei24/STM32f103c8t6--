@@ -219,7 +219,7 @@ int Menu(void){
 
 		if(menuflage_temp==1){return 0;};
 		else if(menuflage_temp==2){MenuToFunction();StopWatch();}//秒表界面
-		else if(menuflage_temp==3){}
+		else if(menuflage_temp==3){MenuToFunction();LED();}//手电筒界面
 		else if(menuflage_temp==4){}
 		else if(menuflage_temp==5){}
 		else if(menuflage_temp==6){}
@@ -329,6 +329,65 @@ int StopWatch(void){
 				OLED_ReverseArea(88,44,32,16);
 				OLED_Update();
 				break;
+		}
+	}
+}
+
+/*----------------------------------手电筒界面-------------------------------------*/
+void Show_LED_UI(void){
+	OLED_ShowImage(0,0,16,16,Return);//退回键图标
+	OLED_ShowString(20,20,"OFF",OLED_12X24);
+	OLED_ShowString(72,20,"ON",OLED_12X24);
+}
+
+
+uint8_t led_flag=1;//手电筒标志位
+int LED(void){
+	while(1)
+	{
+		KeyNum=Key_GetNum();
+		uint8_t led_flag_temp=0;
+		if(KeyNum==1)//上一项
+		{
+			led_flag--;
+			if(led_flag<=0)led_flag=3;
+		}
+		else if(KeyNum==2)//下一项
+		{
+			led_flag++;
+			if(led_flag>=4)led_flag=1;
+		}
+		else if(KeyNum==3)//确认
+		{
+			OLED_Clear();
+			OLED_Update();
+			led_flag_temp=led_flag;
+		}
+
+		if(led_flag_temp==1){return 0;};//说明退回键被按下，返回上一级菜单
+		
+		switch(led_flag)
+		{
+			case 1:
+				Show_LED_UI();//退回键处
+				OLED_ReverseArea(0,0,16,16);
+				OLED_Update();
+				break;
+			
+			case 2:
+				Show_LED_UI();//OFF键处
+				LED_OFF();
+				OLED_ReverseArea(20,20,36,24);
+				OLED_Update();
+				break;
+
+			case 3:
+			    Show_LED_UI();//ON键处
+				LED_ON();
+				OLED_ReverseArea(72,20,24,24);
+				OLED_Update();
+				break;
+			
 		}
 	}
 }

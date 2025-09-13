@@ -8,4 +8,5 @@ int SettingPage(void);
 int Menu(void);
 void StopWatch_Tick(void);
 int StopWatch(void);
+int LED(void);
 #endif
