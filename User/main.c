@@ -4,11 +4,12 @@
 #include "menu.h"
 #include "Timer.h"
 #include "Key.h"
+#include "dino.h"
 /**
-  * �����ᶨ�壺
-  * ���Ͻ�Ϊ(0, 0)��
-  * ��������ΪX�ᣬȡֵ��Χ��0~127
-  * ��������ΪY�ᣬȡֵ��Χ��0~63
+  * 坐标轴定义：
+  * 左上角为（0，0）
+  * 横向向右是x轴，0~127
+  * 纵向向下是y轴，0~63
   * 
   *       0             X轴           127 
   *      .------------------------------->
@@ -40,6 +41,8 @@ int main(void)
 		clkflag1=First_Page_Clock();
 		if(clkflag1==1){Menu();}//菜单
 		else if(clkflag1==2){SettingPage}//设置
+
+    DinoGame_Animation();
 	}
 }
 
@@ -50,6 +53,7 @@ void TIM2_IRQHandler(void)
 	{
 		Key_Tick();
     StopWatch_Tick();//秒表的时间增加函数
+    Dino_Tick();//恐龙游戏分数增加函数
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }
