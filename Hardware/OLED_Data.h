@@ -35,6 +35,9 @@ extern const uint8_t Diode[];
 extern const uint8_t Return[];//返回键图像
 extern const uint8_t Menu_Grap[][128];//各种功能图标的图像
 extern const uint8_t Frame[];//边框图像
+extern const uint8_t Ground[];//地面贴图
+extern const uint8_t Barrier[][48];//障碍物图像
+extern const uint8_t Cloud[];//云朵图像
 /*按照上面的格式，在这个位置加入新的图像数据的声明*/
 //...
 

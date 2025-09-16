@@ -4,36 +4,36 @@
 #include <stdint.h>
 #include "OLED_Data.h"
 
-/*²ÎÊýºê¶¨Òå*********************/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ê¶¨ï¿½ï¿½*********************/
 
-/*FontSize²ÎÊýÈ¡Öµ*/
-/*´Ë²ÎÊýÖµ²»½öÓÃÓÚÅÐ¶Ï£¬¶øÇÒÓÃÓÚ¼ÆËãºáÏò×Ö·ûÆ«ÒÆ£¬Ä¬ÈÏÖµÎª×ÖÌåÏñËØ¿í¶È*/
+/*FontSizeï¿½ï¿½ï¿½ï¿½È¡Öµ*/
+/*ï¿½Ë²ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Æ«ï¿½Æ£ï¿½Ä¬ï¿½ï¿½ÖµÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½*/
 #define OLED_8X16				8
 #define OLED_6X8				6
 #define OLED_12X24      12
-/*IsFilled²ÎÊýÊýÖµ*/
+/*IsFilledï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ*/
 #define OLED_UNFILLED			0
 #define OLED_FILLED				1
 
-/*********************²ÎÊýºê¶¨Òå*/
+/*********************ï¿½ï¿½ï¿½ï¿½ï¿½ê¶¨ï¿½ï¿½*/
 
 
-/*º¯ÊýÉùÃ÷*********************/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*********************/
 
-/*³õÊ¼»¯º¯Êý*/
+/*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 void OLED_Init(void);
 
-/*¸üÐÂº¯Êý*/
+/*ï¿½ï¿½ï¿½Âºï¿½ï¿½ï¿½*/
 void OLED_Update(void);
 void OLED_UpdateArea(int16_t X, int16_t Y, uint8_t Width, uint8_t Height);
 
-/*ÏÔ´æ¿ØÖÆº¯Êý*/
+/*ï¿½Ô´ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½*/
 void OLED_Clear(void);
 void OLED_ClearArea(int16_t X, int16_t Y, uint8_t Width, uint8_t Height);
 void OLED_Reverse(void);
 void OLED_ReverseArea(int16_t X, int16_t Y, uint8_t Width, uint8_t Height);
 
-/*ÏÔÊ¾º¯Êý*/
+/*ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½*/
 void OLED_ShowChar(int16_t X, int16_t Y, char Char, uint8_t FontSize);
 void OLED_ShowString(int16_t X, int16_t Y, char *String, uint8_t FontSize);
 void OLED_ShowNum(int16_t X, int16_t Y, uint32_t Number, uint8_t Length, uint8_t FontSize);
@@ -44,7 +44,7 @@ void OLED_ShowFloatNum(int16_t X, int16_t Y, double Number, uint8_t IntLength, u
 void OLED_ShowImage(int16_t X, int16_t Y, uint8_t Width, uint8_t Height, const uint8_t *Image);
 void OLED_Printf(int16_t X, int16_t Y, uint8_t FontSize, char *format, ...);
 
-/*»æÍ¼º¯Êý*/
+/*ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½*/
 void OLED_DrawPoint(int16_t X, int16_t Y);
 uint8_t OLED_GetPoint(int16_t X, int16_t Y);
 void OLED_DrawLine(int16_t X0, int16_t Y0, int16_t X1, int16_t Y1);
@@ -54,10 +54,11 @@ void OLED_DrawCircle(int16_t X, int16_t Y, uint8_t Radius, uint8_t IsFilled);
 void OLED_DrawEllipse(int16_t X, int16_t Y, uint8_t A, uint8_t B, uint8_t IsFilled);
 void OLED_DrawArc(int16_t X, int16_t Y, uint8_t Radius, int16_t StartAngle, int16_t EndAngle, uint8_t IsFilled);
 
-/*********************º¯ÊýÉùÃ÷*/
+/*********************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
+extern uint8_t OLED_DisplayBuf[8][128];
 
 #endif
 
 
-/*****************½­Ð­¿Æ¼¼|°æÈ¨ËùÓÐ****************/
+/*****************ï¿½ï¿½Ð­ï¿½Æ¼ï¿½|ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½****************/
 /*****************jiangxiekeji.com*****************/
