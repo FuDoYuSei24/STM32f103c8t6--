@@ -32,15 +32,20 @@ void Show_Score(void){
 }
 
 //整合小恐龙动画的函数
-void DinoGame_Animation(void){
-    OLED_Clear();
-    Show_Score();
-    Show_Ground();
-    Show_Barrier();
-    Show_Dino();
-    OLED_Update();
-    isColliding(&dino,&barrier);
-
+int DinoGame_Animation(void){
+    while(1){
+        int return_flag;
+        OLED_Clear();
+        Show_Score();
+        Show_Ground();
+        Show_Barrier();
+        Show_Dino();
+        OLED_Update();
+        return_flag = isColliding(&dino,&barrier);
+        if(return_flag==1){//发生碰撞
+            return 0;
+        }
+    }
 }
 
 //给Score分频的函数
@@ -156,7 +161,7 @@ void Show_Dino(void){
 }
 
 //碰撞检测函数
-void isColliding(struct Object_Position *a,struct Object_Position *b){
+int isColliding(struct Object_Position *a,struct Object_Position *b){
     if((a->maxX>b->minX)&&(a->minX<b->maxX)&&(a->maxX>b->minY)&&(a->minY<b->maxX)){//检测到碰撞发生
         OLED_Clear();
         OLED_ShowImage(28,24,"Game Over",OLED_8X16);
@@ -164,5 +169,13 @@ void isColliding(struct Object_Position *a,struct Object_Position *b){
         Delay_s(1);
         OLED_Clear();
         OLED_Update();
+        return 1;
     }
+    return 0;
+}
+
+
+//标志位清零函数
+void DinoGame_Pos_Init(void){
+    Score=Ground_Pos=Barrier_Pos=Cloud_Pos=Jump_Pos=0;
 }

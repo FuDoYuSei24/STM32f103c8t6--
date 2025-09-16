@@ -3,8 +3,7 @@
 
 
 void Dino_Tick(void);
-void DinoGame_Animation(void);
-
-
+int DinoGame_Animation(void);
+void DinoGame_Pos_Init(void);
 
 #endif

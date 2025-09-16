@@ -9,6 +9,7 @@
 #include "Delay.h"
 #include "MyI2C.h"
 #include <math.h>
+#include "dino.h"
 
 uint8_t KeyNum;
 
@@ -225,7 +226,7 @@ int Menu(void){
 		else if(menuflage_temp==2){MenuToFunction();StopWatch();}//秒表界面
 		else if(menuflage_temp==3){MenuToFunction();LED();}//手电筒界面
 		else if(menuflage_temp==4){MenuToFunction();MPU6050();}//MPU6050界面
-		else if(menuflage_temp==5){}
+		else if(menuflage_temp==5){MenuToFunction();Game();}//小恐龙游戏界面
 		else if(menuflage_temp==6){}
 		else if(menuflage_temp==7){}
 
@@ -464,12 +465,12 @@ int Game(void){
 		if(KeyNum==1)//上一项
 		{
 			game_flag--;
-			if(game_flag<=0)game_flag=3;
+			if(game_flag<=0)game_flag=2;
 		}
 		else if(KeyNum==2)//下一项
 		{
 			game_flag++;
-			if(game_flag>=4)game_flag=1;
+			if(game_flag>=3)game_flag=1;
 		}
 		else if(KeyNum==3)//确认
 		{
@@ -479,6 +480,10 @@ int Game(void){
 		}
 
 		if(game_flag_temp==1){return 0;};//说明退回键被按下，返回上一级菜单
+		else is(game_flag_temp==2){
+			DinoGame_Pos_Init();
+			DinoGame_Animation();
+		}
 		
 		switch(game_flag)
 		{
@@ -489,19 +494,13 @@ int Game(void){
 				break;
 			
 			case 2:
-				Show_Game_UI();//OFF键处
+				Show_Game_UI();//
 				LED_OFF();
-				OLED_ReverseArea(20,20,36,24);
+				OLED_ReverseArea(0,16,80,16);
 				OLED_Update();
 				break;
 
-			case 3:
-			    Show_Game_UI();//ON键处
-				LED_ON();
-				OLED_ReverseArea(72,20,24,24);
-				OLED_Update();
-				break;
-			
+
 		}
 	}
 }
