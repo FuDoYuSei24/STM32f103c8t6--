@@ -446,3 +446,62 @@ int MPU6050(void){
 		OLED_Update();
 	}
 }
+
+/*----------------------------------小恐龙游戏界面-------------------------------------*/
+void Show_Game_UI(void){
+	OLED_ShowImage(0,0,16,16,Return);
+	OLED_ShowImage(0,16,"谷歌小恐龙",OLED_8X16);
+}
+
+
+uint8_t game_flag=1;//游戏标志位
+//光标移动函数
+int Game(void){
+	while(1)
+	{
+		KeyNum=Key_GetNum();
+		uint8_t game_flag_temp=0;
+		if(KeyNum==1)//上一项
+		{
+			game_flag--;
+			if(game_flag<=0)game_flag=3;
+		}
+		else if(KeyNum==2)//下一项
+		{
+			game_flag++;
+			if(game_flag>=4)game_flag=1;
+		}
+		else if(KeyNum==3)//确认
+		{
+			OLED_Clear();
+			OLED_Update();
+			game_flag_temp=game_flag;
+		}
+
+		if(game_flag_temp==1){return 0;};//说明退回键被按下，返回上一级菜单
+		
+		switch(game_flag)
+		{
+			case 1:
+				Show_Game_UI();//退回键处
+				OLED_ReverseArea(0,0,16,16);
+				OLED_Update();
+				break;
+			
+			case 2:
+				Show_Game_UI();//OFF键处
+				LED_OFF();
+				OLED_ReverseArea(20,20,36,24);
+				OLED_Update();
+				break;
+
+			case 3:
+			    Show_Game_UI();//ON键处
+				LED_ON();
+				OLED_ReverseArea(72,20,24,24);
+				OLED_Update();
+				break;
+			
+		}
+	}
+}

@@ -38,6 +38,7 @@ extern const uint8_t Frame[];//边框图像
 extern const uint8_t Ground[];//地面贴图
 extern const uint8_t Barrier[][48];//障碍物图像
 extern const uint8_t Cloud[];//云朵图像
+extern const uint8_t Dino[][48];//小恐龙图像 
 /*按照上面的格式，在这个位置加入新的图像数据的声明*/
 //...
 

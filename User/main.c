@@ -42,7 +42,7 @@ int main(void)
 		if(clkflag1==1){Menu();}//菜单
 		else if(clkflag1==2){SettingPage}//设置
 
-    DinoGame_Animation();
+
 	}
 }
 
