@@ -32,6 +32,20 @@ uint8_t Key_GetNum(void)
 		return 0;
 	}
 }
+
+int press_time;
+//检测key3长按
+void Key3_Tick(void){
+	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)//按键3按下
+	{
+		press_time++;
+	}
+
+	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 1)//按键3松开
+	{
+		press_time=0;
+	}
+}
 uint8_t Key_GetState(void)
 {
 	
@@ -39,13 +53,17 @@ uint8_t Key_GetState(void)
 	{
 		return 1;
 	}
-	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6) == 0)//按键2按下
+	else if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6) == 0)//按键2按下
 	{
 		return 2;
 	}
-	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)//按键3按下
+	else if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)//按键3按下
 	{
 		return 3;
+	}
+	else if ((GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4) == 0)&&press_time>1000)
+	{
+		return 4;
 	}
 	
 	else//没有按键按下

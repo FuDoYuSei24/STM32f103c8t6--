@@ -51,6 +51,7 @@ void TIM2_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
+    Key3_Tick();
 		Key_Tick();
     StopWatch_Tick();//秒表的时间增加函数
     Dino_Tick();//恐龙游戏分数增加函数
