@@ -11,4 +11,5 @@ int StopWatch(void);
 int LED(void);
 int MPU6050(void);
 int Game(void);
+int Emoji(void);
 #endif
