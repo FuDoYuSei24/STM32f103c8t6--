@@ -228,7 +228,7 @@ int Menu(void){
 		else if(menuflage_temp==4){MenuToFunction();MPU6050();}//MPU6050界面
 		else if(menuflage_temp==5){MenuToFunction();Game();}//小恐龙游戏界面
 		else if(menuflage_temp==6){MenuToFunction();Emoji();}//动态表情包界面
-		else if(menuflage_temp==7){}
+		else if(menuflage_temp==7){MenuToFunction();Gradienter();}//水平仪函数
 
 
 		if(move_flage==1){
@@ -544,4 +544,27 @@ int Emoji(void){
 		}
 		Show_Emoji_UI();
 	}
+}
+
+/*----------------------------------水平仪界面-------------------------------------*/
+//显示水平仪函数
+void Show_Gradienter_UI(void){
+	MPU6050_Calculation();
+	OLED_DrawCircle(64,32,30,0);//外面的大圆
+	OLED_DrawCircle(64-Roll,32+Pitch,4,1);//中心的小圆
+}
+
+int Gradienter(void){
+	while(1){
+		KeyNum=Key_GetNum();
+		if(KeyNum==3){
+			OLED_Clear();
+			OLED_Update();
+			return 0;
+		}
+		OLED_Clear();
+		Show_Gradienter_UI();
+		OLED_Update();
+	}
+
 }
